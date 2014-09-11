@@ -7,6 +7,7 @@ class Rebuild
   end
 
   def download
+    create_directory
     puts "------ Start downloading ------"
     @rss.items.each do |item|
       puts "Now download -> #{item.title}"
