@@ -18,3 +18,6 @@ class Rebuild
     puts "****** Finished downloading ******"
   end
 end
+
+rebuild = Rebuild.new
+rebuild.download
