@@ -11,13 +11,13 @@ class Rebuild
     puts "------ Start downloading ------"
     @rss.items.each do |item|
       puts "Now download -> #{item.title}"
-      system("cd",
-	     "#{download_directory}")
-      system("curl",
-	     "--location",
-	     "--output",
-	     "#{item.title}.mp3",
-	     "#{item.enclosure.url}")
+      Dir.chdir(download_directory) do
+	system("curl",
+	       "--location",
+	       "--output",
+	       "#{item.title}.mp3",
+	       "#{item.enclosure.url}")
+      end
     end
     puts "****** Finished downloading ******"
   end
@@ -28,11 +28,7 @@ class Rebuild
   end
 
   def create_directory
-    begin
-      Dir.chdir(download_directory)
-    rescue Errno::ENOENT
-      Dir.mkdir(download_directory)
-    end
+    Dir.mkdir(download_directory) unless Dir.exist?(download_directory)
   end
 end
 
