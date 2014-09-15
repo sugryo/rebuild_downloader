@@ -2,7 +2,11 @@ require "rss"
 
 class Rebuild
   def initialize
-    @rss = RSS::Parser.parse("http://feeds.rebuild.fm/rebuildfm")
+    begin
+      @rss = RSS::Parser.parse("http://feeds.rebuild.fm/rebuildfm")
+    rescue SocketError
+      puts "Can't connect Internet"
+    end
     @home = Dir.home
   end
 
@@ -24,7 +28,7 @@ class Rebuild
 
   private
   def download_directory
-    "#{@home}/rebuild"
+    File.join(@home, "rebuild")
   end
 
   def create_directory
