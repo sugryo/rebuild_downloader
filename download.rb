@@ -17,7 +17,7 @@ class Rebuild
     puts "------ Start downloading ------"
     @rss.items.each do |item|
       Dir.chdir(download_directory) do
-	next unless File.exist?("#{item.title}.mp3")
+	next if File.exist?("#{item.title}.mp3")
 	puts "Now download -> #{item.title}"
 	system("curl",
 	       "--location",
