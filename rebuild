@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec /usr/bin/env ruby /home/sugryo/github/sugryo/rebuild_downloader/download.rb
