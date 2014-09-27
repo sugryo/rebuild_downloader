@@ -14,19 +14,18 @@ class Rebuild
 
   def download
     create_directory
-    puts "------ Start downloading ------"
     @rss.items.each do |item|
       Dir.chdir(download_directory) do
-	next if File.exist?("#{item.title}.mp3")
-	puts "Now download -> #{item.title}"
+	title = item.title.delete("/")
+	next if File.exist?("#{title}.mp3")
+	puts "Now download -> #{title}"
 	system("curl",
 	       "--location",
 	       "--output",
-	       "#{item.title}.mp3",
+	       "#{title}.mp3",
 	       "#{item.enclosure.url}")
       end
     end
-    puts "****** Finished downloading ******"
   end
 
   private
