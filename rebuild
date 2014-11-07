@@ -38,10 +38,6 @@ class Rebuild
   def ep_directory
     File.join(@home, "rebuild", "ep")
   end
-
-  def aftershow_directory
-    File.join(@home, "rebuild", "aftershow")
-  end
   
   def create_directory
     FileUtils.mkdir_p(download_directory) unless Dir.exist?(download_directory)
