@@ -1,2 +1,2 @@
-rebuild_downloader
-==================
+# RebuildDownloader
+これは、[Rebuild](http://rebuild.fm)をダウンロードするためのツールです。
