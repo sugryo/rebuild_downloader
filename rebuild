@@ -34,9 +34,9 @@ class Rebuild
   def download_directory
     File.join(@home, "rebuild")
   end
-
+  
   def create_directory
-    Dir.mkdir(download_directory) unless Dir.exist?(download_directory)
+    FileUtils.mkdir_p(download_directory) unless Dir.exist?(download_directory)
   end
 end
 
