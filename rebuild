@@ -60,6 +60,15 @@ class Rebuild
     puts "Usages: rebuild [--option]"
     puts "        options:          "
   end
+
+  def rss_parse
+    begin
+      @rss = RSS::Parser.parse("http://feeds.rebuild.fm/rebuildfm")
+    rescue SocketError
+      puts "Can't connect Internet"
+      help
+    end
+  end
 end
 
 rebuild = Rebuild.new
