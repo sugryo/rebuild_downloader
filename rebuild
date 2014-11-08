@@ -14,6 +14,15 @@ class Rebuild
     @home = Dir.home
   end
 
+  def run
+    case @command
+    when "rebuild"
+      download
+    else
+      help
+    end
+  end
+  
   def download
     create_directory
     @rss.items.each do |item|
