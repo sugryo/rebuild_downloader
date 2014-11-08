@@ -46,6 +46,11 @@ class Rebuild
   def create_directory
     FileUtils.mkdir_p(download_directory) unless Dir.exist?(download_directory)
   end
+
+  def help
+    puts "Usages: rebuild [--option]"
+    puts "        options:          "
+  end
 end
 
 rebuild = Rebuild.new
