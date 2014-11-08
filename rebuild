@@ -6,12 +6,9 @@ require "fileutils"
 class Rebuild
   def initialize
     @command = ARGV
-    begin
-      @rss = RSS::Parser.parse("http://feeds.rebuild.fm/rebuildfm")
-    rescue SocketError
-      puts "Can't connect Internet"
-    end
     @home = Dir.home
+    rss_parse
+    run
   end
 
   def run
@@ -72,4 +69,4 @@ class Rebuild
 end
 
 rebuild = Rebuild.new
-rebuild.download
+rebuild.run
